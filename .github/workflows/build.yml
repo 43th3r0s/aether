@@ -1,5 +1,11 @@
 ---
 name: Build container image
+
+permissions:
+  contents: read
+  packages: write
+  id-token: write
+
 on:
   pull_request:
     branches:
