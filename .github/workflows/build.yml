@@ -26,9 +26,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Install modern Just
         run: |
-          curl -L https://github.com/casey/just/releases/latest/download/just-x86_64-unknown-linux-musl.tar.gz -o just.tar.gz
+          JUST_VERSION=1.25.2
+          curl -L -H "Accept: application/octet-stream" \
+          https://github.com/casey/just/releases/download/${JUST_VERSION}/just-${JUST_VERSION}-x86_64-unknown-linux-musl.tar.gz \
+          -o just.tar.gz
+
           tar -xzf just.tar.gz
+          chmod +x just
           sudo mv just /usr/local/bin/just
+
           just --version
 
       - name: Log in to GHCR
