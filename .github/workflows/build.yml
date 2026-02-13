@@ -33,7 +33,7 @@ jobs:
           just --version
 
       - name: Log in to GHCR
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | podman login ghcr.io -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.CR_PAT }}" | podman login ghcr.io -u phonowon --password-stdin
 
       - name: Build image
         run: |
